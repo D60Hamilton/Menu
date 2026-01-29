@@ -204,58 +204,7 @@ details[open] summary::before{
 </style>
 </head>
 
-<body>
-
-    <button onclick="callStaff()" style="
-  font-size:18px;
-  padding:15px 25px;
-  background:#e63946;
-  color:white;
-  border:none;
-  border-radius:10px;
-">
-🔔 Call Staff
-</button>
-
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
-  const firebaseConfig = {
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyC5lwOG_Ltan0y5N2uZsqT4JbyQTg5TkL0",
-  authDomain: "d60-call-staff.firebaseapp.com",
-  projectId: "d60-call-staff",
-  storageBucket: "d60-call-staff.firebasestorage.app",
-  messagingSenderId: "158596459168",
-  appId: "1:158596459168:web:06cb38902049d53e8177c5",
-  measurementId: "G-2XRCJ736E5"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-
-  window.callStaff = function () {
-    set(ref(db, 'calls/table1'), {
-      time: Date.now()
-    });
-    alert("Staff has been notified ✅");
-  }
-</script>
-
-    
+<body>    
 
  <div class="language-switch">
     <a class="lang-button" href="menu_Farsi.html">فارسی</a>
@@ -903,6 +852,7 @@ const analytics = getAnalytics(app);  };
 
 </body>
 </html>
+
 
 
 
