@@ -1302,6 +1302,60 @@ details[open] summary::before{
 
     </div><!-- /container -->
 
+
+    <!-- D60 Clicker START -->
+
+<div class="d60-game">
+  <h2>🎮 D60 Clicker</h2>
+  <p class="hint">بزن ببین چقدر دهه شصتی هستی</p>
+
+  <button class="click-btn" onclick="clickD60()">📼</button>
+
+  <div class="score">امتیاز: <span id="score">0</span></div>
+
+  <div class="result" id="result"></div>
+</div>
+
+<style>
+  .d60-game {
+    max-width: 360px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .click-btn {
+    font-size: 64px;
+    padding: 20px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #ffcc00;
+  }
+  .click-btn:active {
+    transform: scale(0.9);
+  }
+</style>
+
+<script>
+  let score = 0;
+  function clickD60() {
+    score++;
+    document.getElementById("score").innerText = score;
+    document.getElementById("result").innerText =
+      score < 5 ? "تازه وارد نوستالژی شدی 😄" :
+      score < 10 ? "یه کم دهه شصتی هستی 🙂" :
+      score < 15 ? "کاملاً حال‌و‌هوای دهه شصت 😎" :
+      "دهه شصتی اصیل! 📺📼🕰️";
+  }
+</script>
+
+<!-- D60 Clicker END -->
+    
+    
     <script>
         (function () {
             const modal = document.getElementById("imgModal");
@@ -1338,6 +1392,7 @@ details[open] summary::before{
 
 </body>
 </html>
+
 
 
 
