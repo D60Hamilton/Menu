@@ -1302,58 +1302,113 @@ details[open] summary::before{
 
     </div><!-- /container -->
 
-
-    <!-- D60 Clicker START -->
-
-<div class="d60-game">
-  <h2>🎮 D60 Clicker</h2>
-  <p class="hint">بزن ببین چقدر دهه شصتی هستی</p>
-
-  <button class="click-btn" onclick="clickD60()">📼</button>
-
-  <div class="score">امتیاز: <span id="score">0</span></div>
-
-  <div class="result" id="result"></div>
+<!------------------------------------- GAME Start ------------------------------------->
+<div id="d60-quiz">
+  <h2>دهه ۶۰ — آزمون</h2>
+  <div id="quiz-box"></div>
+  <button id="nextBtn" onclick="nextQuestion()">سؤال بعد</button>
 </div>
 
 <style>
-  .d60-game {
-    max-width: 360px;
-    margin: 40px auto;
-    padding: 20px;
-    text-align: center;
+  #d60-quiz {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 24px;
+    border: 1px solid #ddd;
+    font-family: Arial, sans-serif;
     background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
-  .click-btn {
-    font-size: 64px;
-    padding: 20px;
-    margin: 20px 0;
-    border: none;
-    border-radius: 50%;
+
+  #d60-quiz h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .option {
+    display: block;
+    margin: 8px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
     cursor: pointer;
-    background: #ffcc00;
   }
-  .click-btn:active {
-    transform: scale(0.9);
+
+  .option:hover {
+    background: #f2f2f2;
+  }
+
+  #nextBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
   }
 </style>
 
 <script>
-  let score = 0;
-  function clickD60() {
-    score++;
-    document.getElementById("score").innerText = score;
-    document.getElementById("result").innerText =
-      score < 5 ? "تازه وارد نوستالژی شدی 😄" :
-      score < 10 ? "یه کم دهه شصتی هستی 🙂" :
-      score < 15 ? "کاملاً حال‌و‌هوای دهه شصت 😎" :
-      "دهه شصتی اصیل! 📺📼🕰️";
+const questions = [
+  { q: "کارتون رایج عصرها؟", o: ["پسر شجاع", "بن تن", "تام و جری", "باب اسفنجی"], a: 0 },
+  { q: "تلویزیون رایج؟", o: ["LED", "LCD", "سیاه‌وسفید", "OLED"], a: 2 },
+  { q: "کنترل تلویزیون؟", o: ["ریموت", "دکمه", "اپ موبایل", "صدا"], a: 1 },
+  { q: "سرگرمی رایج بچه‌ها؟", o: ["کوچه", "پلی‌استیشن", "تبلت", "اینستاگرام"], a: 0 },
+  { q: "وسیله پخش موسیقی؟", o: ["اسپاتیفای", "MP3", "نوار کاست", "CD"], a: 2 },
+  { q: "تلفن خانه؟", o: ["بی‌سیم", "لمسی", "سکه‌ای", "شماره‌گیر چرخشی"], a: 3 },
+  { q: "عکس گرفتن با؟", o: ["موبایل", "دیجیتال", "آنالوگ", "پولاروید"], a: 2 },
+  { q: "صبح جمعه یعنی؟", o: ["مدرسه", "کار", "کارتون", "کلاس آنلاین"], a: 2 },
+  { q: "بازی رایج؟", o: ["آتاری", "PS5", "XBOX", "نینتندو سوییچ"], a: 0 },
+  { q: "یخمک بیشتر کجا؟", o: ["سوپر", "خونه", "مدرسه", "کوچه"], a: 3 },
+  { q: "دفتر مشق؟", o: ["دیجیتال", "سیمی", "۴۰ برگ کاهی", "اپلیکیشن"], a: 2 },
+  { q: "کیف مدرسه؟", o: ["چرخ‌دار", "کوله مدرن", "چرمی ساده", "اسپرت"], a: 2 },
+  { q: "تفریح عصرها؟", o: ["گوشی", "کوچه", "نتفلیکس", "گیم آنلاین"], a: 1 },
+  { q: "تلویزیون چند کانال؟", o: ["۱", "۵۰+", "کابلی", "استریم"], a: 0 },
+  { q: "آب خوردن؟", o: ["بطری", "فیلتر", "شیر آب", "قوطی"], a: 2 },
+  { q: "ساعت زنگ‌دار؟", o: ["موبایل", "دیجیتال", "عقربه‌ای", "هوشمند"], a: 2 },
+  { q: "قرار گذاشتن؟", o: ["دایرکت", "پیامک", "تلفن", "حضوری"], a: 3 },
+  { q: "کتاب مدرسه؟", o: ["PDF", "رنگی", "سیاه‌وسفید", "تبلت"], a: 2 },
+  { q: "صف بستن؟", o: ["سینما", "سوپر", "مدرسه", "همه"], a: 3 },
+  { q: "خاطره مشترک؟", o: ["WiFi", "کوچه", "گوشی", "هدفون"], a: 1 }
+];
+
+let current = 0;
+let score = 0;
+
+function loadQuestion() {
+  const q = questions[current];
+  let html = `<p>${current+1}. ${q.q}</p>`;
+  q.o.forEach((opt, i) => {
+    html += `<div class="option" onclick="answer(${i})">${opt}</div>`;
+  });
+  document.getElementById("quiz-box").innerHTML = html;
+}
+
+function answer(i) {
+  if (i === questions[current].a) score++;
+  nextQuestion();
+}
+
+function nextQuestion() {
+  current++;
+  if (current < questions.length) {
+    loadQuestion();
+  } else {
+    let result =
+      score <= 5 ? "دهه شصت رو نشنیدی" :
+      score <= 10 ? "آشنا از دور" :
+      score <= 15 ? "دهه شصتی" :
+      "اصلِ کار";
+
+    document.getElementById("quiz-box").innerHTML =
+      `<h3>نتیجه</h3><p>امتیاز: ${score} از ۲۰</p><p>${result}</p>`;
+    document.getElementById("nextBtn").style.display = "none";
   }
+}
+
+loadQuestion();
 </script>
 
-<!-- D60 Clicker END -->
+
+<!------------------------------------- GAME END ------------------------------------->
     
     
     <script>
@@ -1392,6 +1447,7 @@ details[open] summary::before{
 
 </body>
 </html>
+
 
 
 
