@@ -1,1 +1,1587 @@
-باز که عجله کردی!!!!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D60 Restaurant</title>
+
+   <style>
+:root {
+    --bg:#f9f7f2;
+    --text:#111;
+    --header-bg:#1e1e1e;
+    --header-fg:#fff;
+    --accent:#c9a227;
+    --muted:#444;
+    --border:#e0e0e0;
+    --overlay:rgba(0,0,0,.8);
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* ---------- HEADER ---------- */
+.header{
+    background:var(--header-bg);
+    color:var(--header-fg);
+    text-align:center;
+    padding:20px 16px 14px;
+    font-size:26px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.review-wrap{
+    background:var(--header-bg);
+    text-align:center;
+    padding-bottom:16px;
+}
+
+.review-link{
+    display:inline-block;
+    font-size:16px;
+    color:#fff;
+    text-decoration:none;
+    background:var(--accent);
+    padding:8px 14px;
+    border-radius:8px;
+}
+
+.review-link:hover{
+    background:#b08d21;
+}
+
+/* ---------- LAYOUT ---------- */
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:30px 20px;
+}
+
+.section{margin-bottom:30px}
+
+/* ---------- DETAILS / SUMMARY ---------- */
+details{border:none}
+
+summary{
+    list-style:none;
+    cursor:pointer;
+    padding:14px 16px 14px 36px;
+    font-size:20px;
+    font-weight:bold;
+    position:relative;
+}
+
+summary::-webkit-details-marker{display:none}
+
+/* single arrow */
+summary::before{
+    content:"▶";
+    position:absolute;
+    left:12px;
+    top:50%;
+    transform:translateY(-50%);
+    transition:transform .2s ease;
+}
+
+details[open] summary::before{
+    transform:translateY(-50%) rotate(90deg);
+}
+
+.divider{
+    height:2px;
+    background:var(--accent);
+    margin:12px 0 18px;
+    border-radius:2px;
+}
+       
+/* ---------- ITEMS ---------- */
+.item{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding-bottom:12px;
+    margin-bottom:18px;
+    border-bottom:1px solid var(--border);
+}
+
+.item-name{font-size:18px;font-weight:bold}
+.item-desc{font-size:14px;color:var(--muted);margin:4px 0}
+.price{font-weight:bold}
+
+.item-img{
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    border-radius:10px;
+    cursor:pointer;
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+
+/* ---------- Review and Instagram ---------- */
+       .review-wrap {
+        display: flex;
+    gap: 12px;
+    align-items: center;       /* وسط‌چین عمودی */
+    justify-content: center;   /* وسط‌چین افقی */
+}
+
+.review-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 44px;
+    min-width: 180px;
+
+    padding: 0 18px;
+    border-radius: 6px;
+
+    background: #f5f5f5;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.review-link.instagram {
+    min-width: 44px;   /* مربع مثل دکمه */
+    padding: 0;
+    background: #E1306C;
+    color: #fff;
+}
+
+.review-link svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* ---------- Change Language ---------- */
+
+       .lang-button {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.lang-button:hover {
+    background: #0056b3;
+}
+
+  
+/* ---------- MODAL ---------- */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:var(--overlay);
+    z-index:999;
+}
+
+.modal-content{
+    max-width:90%;
+    max-height:90%;
+    margin:5% auto;
+    display:block;
+    border-radius:12px;
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:34px;
+    color:#fff;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>    
+
+ <div class="language-switch">
+    <a class="lang-button" href="menu_Farsi.html">فارسی</a>
+</div>
+    
+<div id="imgModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg">
+</div>
+
+<div class="header">D60 Restaurant Menu</div>
+<div class="review-wrap">
+    <a class="review-link"
+       href="https://search.google.com/local/writereview?placeid=ChIJL8miu8ybLIgRirQOLy9JLt4"
+       target="_blank">★ Leave us a Review ★</a>
+
+    <a class="review-link instagram"
+       href="https://www.instagram.com/d60hamilton?igsh=bXdwNHd2bHgwbjk5"
+       target="_blank"
+       aria-label="Instagram">
+       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+           <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.5-.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"/>
+       </svg>
+    </a>
+</div>
+
+    
+    <div class="container">
+
+        <!-- --------------------------- Appetizers --------------------------- -->
+        <div class="section">
+            <details>
+                <summary>Appetizer &amp; Snack</summary>
+                <div class="divider"></div>
+
+                                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Caesar Salad</div>
+                        <div class="item-desc">breaded chicken | Grill</div>
+                        <div class="price">$12</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Caesar.jpeg"
+                         alt="Caesar Salad"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Garden Salad</div>
+                        <div class="item-desc"></div>
+                        <div class="price">$7</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/garden_salad.jpg"
+                         alt="Garden Salad"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Coleslaw</div>
+                        <div class="item-desc"></div>
+                        <div class="price">$5</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Coleslaw.jpeg"
+                         alt="Coleslaw"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Fries (S | L)</div>
+                        <div class="item-desc"></div>
+                        <div class="price">$5 | $8</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Fries.jpg"
+                         alt="Fries (S | L)"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Poutine (S | L)</div>
+                        <div class="item-desc"></div>
+                        <div class="price">$8 | $11</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Poutine.jpeg"
+                         alt="Poutine (S | L)"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Sweet Potato Fries</div>
+                        <div class="item-desc"></div>
+                        <div class="price">$7</div>
+                    </div>
+                    <img class="item-img"
+                         src="TBU.jpeg"
+                         alt="Sweet Potato Fries"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Crispy Mushroom</div>
+                        <div class="item-desc"></div>
+                        <div class="price">$7</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Fried_Mushroom.jpg"
+                         alt="Crispy Mushroom"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Onion Ring</div>
+                        <div class="item-desc"></div>
+                        <div class="price">$7</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Onion_Ring.jpeg"
+                         alt="Onion Ring"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Mexican Corn</div>
+                        <div class="item-desc">Corn mixed with creamy sauce, spices</div>
+                        <div class="price">$7</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Mexican_Corn.jpg"
+                         alt="Mexican Corn"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Garlic Bread</div>
+                        <div class="item-desc"></div>
+                        <div class="price">$9</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Garlic_bread.jpeg"
+                         alt="Garlic Bread"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Falafel</div>
+                        <div class="item-desc">5 Pieces</div>
+                        <div class="price">$6</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Falafel.jpg"
+                         alt="Falafel"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+                
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Special Fries</div>
+                        <div class="item-desc">Large Cut Fries, Deli, Cheese &amp; Mushroom</div>
+                        <div class="price">$12</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Special_Fries_2.jpeg"
+                         alt="Special Fries"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Special Poutine</div>
+                        <div class="item-desc">Large Cut Fries, Deli, Mushroom</div>
+                        <div class="price">$13</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Special_poutine.jpg"
+                         alt="Special Poutine"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Chicken Tenders &amp; Fries</div>
+                        <div class="item-desc"></div>
+                        <div class="price">$12</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Tender_Fries.jpg"
+                         alt="Chicken Tenders and Fries"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Chips &amp; Cheese</div>
+                        <div class="item-desc">Classic Chips, Deli, Cheese &amp; Mushroom</div>
+                        <div class="price">$11</div>
+                    </div>
+                    <img class="item-img"
+                         src="images/Appetizer/Chips_Cheese.jpg"
+                         alt="Chips and Cheese"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Spinach &amp; Cheese Dip</div>
+                        <div class="item-desc"></div>
+                        <div class="price">$12</div>
+                    </div>
+                    <img class="item-img"
+                         src="TBU"
+                         alt="Spinach and Cheese Dip"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+            </details>
+        </div>
+
+        <!-- --------------------------- Smash Burgers --------------------------- -->
+        <div class="section">
+            <details>
+                <summary>Smash Burger</summary>
+                <div class="divider"></div>
+
+                    <div class="item-name">Free Side (Choose one):</div>
+                    <div class="item-desc">Fries | Coleslaw | Garden Salad</div>
+<br>
+                    <div class="item-name">Upgrade your side:</div>
+                    <div class="item-desc">Poutine (+$3.5) | Onion Rings (+$3) | Sweet Potato (+$2.5) | Caesar (+$5)</div>
+<br>
+
+                    <div class="item-name">Add-ons:</div>
+                    <div class="item-desc">Patty (+$3.5) | Mushroom (+$2.0) | Jalapeno (+$1) | Pineapple (+$2) | Brie (+$2) | Bacon (+$3) | Cheese (+$2) | Egg (+$3)</div>
+<br>
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Savor Saver</div>
+                        <div class="item-desc">1×100g beef patty, caramelized onion, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$11</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/SovorSaver.jpg" alt="Savor Saver"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Classic Burger</div>
+                        <div class="item-desc">2×100g beef patties, caramelized onion, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/Classic.jpg" alt="Classic Burger"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Cheese Burger</div>
+                        <div class="item-desc">2×100g beef patties, Cheddar, caramelized onion, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$15</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/CheeseBurger.jpg" alt="Cheese Burger"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Hawaii Burger</div>
+                        <div class="item-desc">2×100g beef patties, Cheddar, Pineapple, caramelized onion, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$17</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/Hawaii.jpeg" alt="Hawaii Burger"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Mushroom Burger</div>
+                        <div class="item-desc">2×100g beef patties, Cheddar, Mushroom, Mozzarella, caramelized onion, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$18</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/Mushroom burger.jpeg" alt="Mushroom Burger"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Jalapeño Burger 🌶</div>
+                        <div class="item-desc">2×100g beef patties, Cheddar, jalapeño, caramelized onion, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$16</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/Jalapeno.jpg" alt="Jalapeño Burger"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Bacon Burger</div>
+                        <div class="item-desc">2×100g beef patties, Cheddar, Beef Bacon, caramelized onion, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$17</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/Bacon.jpeg" alt="Bacon Burger"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Grill Chicken Burger</div>
+                        <div class="item-desc">Grilled Chicken Breast, Brie, Pesto, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$17</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/Grill.jpeg" alt="Grill Chicken Burger"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Crispy Chicken Burger</div>
+                        <div class="item-desc">Crispy Chicken Leg, Cheddar Cheese, Coleslaw</div>
+                        <div class="price">$16</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/CrispyChicken.jpg" alt="Crispy Chicken Burger"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Veggie Burger</div>
+                        <div class="item-desc">Cheddar, caramelized onion, jalapeño</div>
+                        <div class="price">$14</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/Veggie.jpg" alt="Veggie Burger"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Sunny Side Burger</div>
+                        <div class="item-desc">1×100g beef patty, Cheddar, caramelized onion, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$14</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/SunnySide_2.jpeg" alt="Sunny Side Burger"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">D60 Burger</div>
+                        <div class="item-desc">2×100g beef patties, Cheddar, Beef tongue, caramelized onion, Tomato, Pickle, Lettuce, Special Sauce, BBQ sauce</div>
+                        <div class="price">$20</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/Special.jpeg" alt="D60 Special Burger"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">D60 Big</div>
+                        <div class="item-desc">3×100g beef patties, Three-Layer Bun, Cheddar, caramelized onion, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$20</div>
+                    </div>
+                    <img class="item-img" src="images/Burger/Special.jpeg" alt="D60 Special Burger"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+            </details>
+        </div>
+
+        <!-- --------------------------- Sandwiches --------------------------- -->
+        <div class="section">
+            <details>
+                <summary>Sandwiche</summary>
+                <div class="divider"></div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">D60 Special</div>
+                        <div class="item-desc">Roasted Deli (Beef|Chicken|Mix), Hotdog, Cheese, Mushroom, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/D60_Sandwich.jpg" alt="D60 Special"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Hotdog</div>
+                        <div class="item-desc">Hotdog, Onion and Parsley, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/Hotdog.jpg" alt="Hotdog"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Pulled Beef</div>
+                        <div class="item-desc">Pulled Beef, Green Pepper, Cheese, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/Roastbeef.jpeg" alt="Pulled Beef"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Chicken</div>
+                        <div class="item-desc">Chicken Breast, Cheddar, Mushroom, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/Chicken.jpg" alt="Chicken"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Falafel</div>
+                        <div class="item-desc">Falafel, Mango Pickle, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/Felafel.jpeg" alt="Falafel Sandwich"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Roasted Deli</div>
+                        <div class="item-desc">Roasted Deli (Beef|Chicken|Mix), Cheese, Mushroom , Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/Roasted_Deli.jpg" alt="Roasted Deli"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Cold Deli</div>
+                        <div class="item-desc">Deli (Beef|Chicken|Mix), Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/Cold.jpeg" alt="Cold Deli"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Bandari</div>
+                        <div class="item-desc">Sliced Beef Sausages marinated in Onion and Tomato Paste, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/Bandari.jpeg" alt="Bandari"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Cocktail</div>
+                        <div class="item-desc">Beef Sausages, Onion and Parsley, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/Cocktail.jpg" alt="Cocktail"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Krakow</div>
+                        <div class="item-desc">Cheese Krakow Sausage, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/Krakow.jpg" alt="Krakow"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Tongue and Brain</div>
+                        <div class="item-desc">Beef Tongue and Brain, Onion and Parsley, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/Tongue_Brain.jpeg" alt="Tongue and Brain"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Tongue</div>
+                        <div class="item-desc">Beef Tongue, Onion and Parsley, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/Tongue.jpg" alt="Tongue"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Brain</div>
+                        <div class="item-desc">Beef Brain, Onion and Parsley, Tomato, Pickle, Lettuce, Special Sauce</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Sandwich/Brain.jpg" alt="Brain"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+            </details>
+        </div>
+
+          <!-- --------------------------- Dessert --------------------------- -->
+        <div class="section">
+            <details>
+                <summary>Desserts</summary>
+                <div class="divider"></div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Strawberry Shake</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Dessert/Strawberry_Shake.jpg" alt="Dessert"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                  <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Oreo Shake</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Dessert/Oreo_Shake.jpg" alt="Dessert"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                  <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Mango Shake</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Dessert/Mango_Shake.jpg" alt="Dessert"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                  <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Chocolate Shake</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Dessert/Chocolate_Shake.jpg" alt="Dessert"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                  <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Melon Shake</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Dessert"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                  <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Pistachio Shake</div>
+                        <div class="item-desc">Pistachio, Milk, Ice-cream, Honey, Coconut Powder</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Dessert"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                  <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Traditional Saffron Ice-cream</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Dessert/Saffron_Icecream.jpg" alt="Dessert"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                  <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Faloodeh</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Dessert/Faloodeh.jpg" alt="Dessert"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                  <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Faloodeh & Ice-cream</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Dessert/Faloodeh_Bastani.jpeg" alt="Dessert"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                  <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Carrot Cream Fusion</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Dessert/HavijBastani.jpg" alt="Dessert"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+            </details>
+        </div>
+
+        <!-- --------------------------- Soft Drinks --------------------------- -->
+        <div class="section">
+            <details>
+                <summary>Soft Drink</summary>
+                <div class="divider"></div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Can</div>
+                        <div class="item-desc">Coke, Diet, Zero, Pepsi, Fanta, Sprite, Ginger-Ale</div>
+                        <div class="price">$3.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/Can.jpg" alt="Drink"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Coca Cola Glass-Bottle</div>
+                        <div class="price">$3.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/Glass.jpg" alt="Drink"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Barbican</div>
+                        <div class="item-desc">Malt, Lemon, Peach, Pineapple, Apple</div>
+                        <div class="price">$3.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/barbican.jpg" alt="Drink"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Rani</div>
+                        <div class="item-desc">Peach, Pineapple, Mango, Orange</div>
+                        <div class="price">$3.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/Rani.jpg" alt="Drink"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Abali Doogh</div>
+                        <div class="item-desc">Iranian carbonated yogurt drink</div>
+                        <div class="price">$3.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/Abali.jpg" alt="Drink"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Water</div>
+                        <div class="price">$3.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/water.jpg" alt="Drink"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+            </details>
+        </div>
+
+                <!-- --------------------------- Hot Drinks --------------------------- -->
+        <div class="section">
+            <details>
+                <summary>Hot Drink</summary>
+                <div class="divider"></div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Tea (Cup)</div>
+                        <div class="price">$3.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/Can.jpg" alt="Drink"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Tea (Pot)</div>
+                        <div class="price">$3.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/Glass.jpg" alt="Drink"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                 <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Coffee</div>
+                        <div class="price">$13.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/Glass.jpg" alt="Brain"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Espresso</div>
+                        <div class="price">$3.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/barbican.jpg" alt="Drink"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Americano</div>
+                        <div class="price">$3.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/Rani.jpg" alt="Drink"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Latte</div>
+                        <div class="price">$3.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/Abali.jpg" alt="Drink"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Cappuccino</div>
+                        <div class="price">$3.99</div>
+                    </div>
+                    <img class="item-img" src="images/Drink/water.jpg" alt="Drink"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+            </details>
+        </div>
+
+        
+        <!-- --------------------------- Beer --------------------------- -->
+        <div class="section">
+            <details>
+                <summary>Beer</summary>
+                <div class="divider"></div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">DRAFT: Genesis - Czech Pilsner (470 ml - ABV: 4.4%)</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="images/Bar/Genesis.jpg" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">DRAFT: D$Duties - IPA (470 ml - ABV: 7.0%)</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="images/Bar/D_Duties.jpg" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Buswiser (341 ml - ABV: 5.0%)</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="images/Bar/Budwiser.jpg" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Heineken (330 ml - ABV: 5.0%)</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="images/Bar/Heineken.jpg" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Corona (300 ml - ABV: 4.6%)</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="images/Bar/Corona.png" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Laker Lager (341 ml - ABV: 5.0%)</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="images/Bar/Laker.jpg" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Mill Street (341 ml - ABV: 4.2%)</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="images/Bar/Mill Street.jpg" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Guiness Extra Stout (330 ml - ABV: 5.0%)</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="images/Bar/Guiness.jpg" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Amsterdam Boneshaker (437 ml - ABV: 7.1%)</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="images/Bar/Amesterdam_Bonshaker.jpg" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+            </details>
+        </div>
+
+          <!-- --------------------------- Cocktail --------------------------- -->
+        <div class="section">
+            <details>
+                <summary>Cocktail</summary>
+                <div class="divider"></div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">PERSIAN: Amber Ruby</div>
+                        <div class="item-desc">1 oz Arak Saggi, Pomegranate liqueur, Lime Juice, Tonic Water</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                    <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">PERSIAN: Rosette</div>
+                        <div class="item-desc">1.5 oz Rose Gin, Cassis, Tonic Water</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                    <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">PERSIAN: Saffron</div>
+                        <div class="item-desc">1.5 oz Saffron Gin, Tonic Water</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                    <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Mojito</div>
+                        <div class="item-desc">1.5 oz Saffron Gin, Tonic Water</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+
+                    <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Piña Colada</div>
+                        <div class="item-desc">1.0 oz White Rum, Coconut Milk, Pineapple Juice</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+
+                    <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Cosmopolitan</div>
+                        <div class="item-desc">1.5 oz Vodka, Triple Sec, Lime and Cranberry Juice</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+
+                    <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">House Whisky Lemonade</div>
+                        <div class="item-desc">2.0 oz Whisky, Cointreau, Lime Juice</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+
+                    <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Sex on the Beach</div>
+                        <div class="item-desc">1.5 oz Vodka, Peach Liqueur, Cranberry and Orange Juice</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+
+                    <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Sunrise</div>
+                        <div class="item-desc">2.0 oz Tequila, Grenadine, Orange and Lime Juice</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+
+                    <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Margarita</div>
+                        <div class="item-desc">2.0 oz Tequila, Triple Sec, Lime Juice</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+                
+            </details>
+        </div>
+  <!-- --------------------------- Mocktail --------------------------- -->
+        <div class="section">
+            <details>
+                <summary>Mocktail</summary>
+                <div class="divider"></div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Mojito</div>
+                        <div class="item-desc">Fresh Mint, Lime, Sugar, Soda </div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                 <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Piña Colada</div>
+                        <div class="item-desc">Coconut Milk, Pineapple Juice</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                 <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Sunset Crush</div>
+                        <div class="item-desc">Orange and Pineapple Juice, Pomegranate Syrup</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                 <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Golden Spice</div>
+                        <div class="item-desc">Lime and Pineapple Juice, Ginger Beer, Cinnamon Syrup</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+            </details>
+        </div>
+
+        <!-- --------------------------- Shot --------------------------- -->
+        <div class="section">
+            <details>
+                <summary>Shot</summary>
+                <div class="divider"></div>
+
+                <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Vodka</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                 <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Rum</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                 <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Tequila</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                 <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">12-yr Whisky</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                 <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">3-yr Whisky</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                 <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Arak Saggi</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                 <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Rose Gin</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+
+                 <div class="item">
+                    <div class="item-info">
+                        <div class="item-name">Saffron Gin</div>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <img class="item-img" src="TBU" alt="Bar item"
+                         loading="lazy" decoding="async"
+                         onerror="this.onerror=null;this.src='placeholder.jpg';">
+                </div>
+            </details>
+        </div>
+
+    </div><!-- /container -->
+
+<!------------------------------------- GAME Start ------------------------------------->
+<div id="d60-quiz">
+  <h2>دهه ۶۰ — آزمون</h2>
+  <div id="quiz-box"></div>
+  <button id="nextBtn" onclick="nextQuestion()">سؤال بعد</button>
+</div>
+
+<style>
+  #d60-quiz {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 24px;
+    border: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+    background: #fff;
+  }
+
+  #d60-quiz h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .option {
+    display: block;
+    margin: 8px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  .option:hover {
+    background: #f2f2f2;
+  }
+
+  #nextBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+const questions = [
+  { q: "کارتون رایج عصرها؟", o: ["پسر شجاع", "بن تن", "تام و جری", "باب اسفنجی"], a: 0 },
+  { q: "تلویزیون رایج؟", o: ["LED", "LCD", "سیاه‌وسفید", "OLED"], a: 2 },
+  { q: "کنترل تلویزیون؟", o: ["ریموت", "دکمه", "اپ موبایل", "صدا"], a: 1 },
+  { q: "سرگرمی رایج بچه‌ها؟", o: ["کوچه", "پلی‌استیشن", "تبلت", "اینستاگرام"], a: 0 },
+  { q: "وسیله پخش موسیقی؟", o: ["اسپاتیفای", "MP3", "نوار کاست", "CD"], a: 2 },
+  { q: "تلفن خانه؟", o: ["بی‌سیم", "لمسی", "سکه‌ای", "شماره‌گیر چرخشی"], a: 3 },
+  { q: "عکس گرفتن با؟", o: ["موبایل", "دیجیتال", "آنالوگ", "پولاروید"], a: 2 },
+  { q: "صبح جمعه یعنی؟", o: ["مدرسه", "کار", "کارتون", "کلاس آنلاین"], a: 2 },
+  { q: "بازی رایج؟", o: ["آتاری", "PS5", "XBOX", "نینتندو سوییچ"], a: 0 },
+  { q: "یخمک بیشتر کجا؟", o: ["سوپر", "خونه", "مدرسه", "کوچه"], a: 3 },
+  { q: "دفتر مشق؟", o: ["دیجیتال", "سیمی", "۴۰ برگ کاهی", "اپلیکیشن"], a: 2 },
+  { q: "کیف مدرسه؟", o: ["چرخ‌دار", "کوله مدرن", "چرمی ساده", "اسپرت"], a: 2 },
+  { q: "تفریح عصرها؟", o: ["گوشی", "کوچه", "نتفلیکس", "گیم آنلاین"], a: 1 },
+  { q: "تلویزیون چند کانال؟", o: ["۱", "۵۰+", "کابلی", "استریم"], a: 0 },
+  { q: "آب خوردن؟", o: ["بطری", "فیلتر", "شیر آب", "قوطی"], a: 2 },
+  { q: "ساعت زنگ‌دار؟", o: ["موبایل", "دیجیتال", "عقربه‌ای", "هوشمند"], a: 2 },
+  { q: "قرار گذاشتن؟", o: ["دایرکت", "پیامک", "تلفن", "حضوری"], a: 3 },
+  { q: "کتاب مدرسه؟", o: ["PDF", "رنگی", "سیاه‌وسفید", "تبلت"], a: 2 },
+  { q: "صف بستن؟", o: ["سینما", "سوپر", "مدرسه", "همه"], a: 3 },
+  { q: "خاطره مشترک؟", o: ["WiFi", "کوچه", "گوشی", "هدفون"], a: 1 }
+];
+
+let current = 0;
+let score = 0;
+
+function loadQuestion() {
+  const q = questions[current];
+  let html = `<p>${current+1}. ${q.q}</p>`;
+  q.o.forEach((opt, i) => {
+    html += `<div class="option" onclick="answer(${i})">${opt}</div>`;
+  });
+  document.getElementById("quiz-box").innerHTML = html;
+}
+
+function answer(i) {
+  if (i === questions[current].a) score++;
+  nextQuestion();
+}
+
+function nextQuestion() {
+  current++;
+  if (current < questions.length) {
+    loadQuestion();
+  } else {
+    let result =
+      score <= 5 ? "دهه شصت رو نشنیدی" :
+      score <= 10 ? "آشنا از دور" :
+      score <= 15 ? "دهه شصتی" :
+      "اصلِ کار";
+
+    document.getElementById("quiz-box").innerHTML =
+      `<h3>نتیجه</h3><p>امتیاز: ${score} از ۲۰</p><p>${result}</p>`;
+    document.getElementById("nextBtn").style.display = "none";
+  }
+}
+
+loadQuestion();
+</script>
+
+
+<!------------------------------------- GAME END ------------------------------------->
+    
+    
+    <script>
+        (function () {
+            const modal = document.getElementById("imgModal");
+            const modalImg = document.getElementById("modalImg");
+            const closeBtn = document.querySelector(".close");
+
+            function openModal(src, alt) {
+                modal.style.display = "block";
+                modal.setAttribute("aria-hidden", "false");
+                modalImg.src = src;
+                modalImg.alt = (alt || "image") + " (preview)";
+                document.body.style.overflow = "hidden";
+            }
+            function closeModal() {
+                modal.style.display = "none";
+                modal.setAttribute("aria-hidden", "true");
+                modalImg.src = "";
+                modalImg.alt = "";
+                document.body.style.overflow = "";
+            }
+
+            document.querySelectorAll(".item-img").forEach(img => {
+                img.addEventListener("click", () => openModal(img.src, img.alt));
+                img.setAttribute("loading", "lazy");
+                img.setAttribute("decoding", "async");
+            });
+
+            closeBtn.addEventListener("click", closeModal);
+            closeBtn.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") closeModal(); });
+            modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+            document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+        })();
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
