@@ -176,7 +176,12 @@ details[open] summary::before{
 }
 
 /* ---------- Right to Left for Farsi ---------- */
-
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
 
 .menu-item.rtl {
     direction: rtl;
@@ -184,13 +189,13 @@ details[open] summary::before{
 }
 
 .item-info {
-    flex: 1;              /* خیلی مهم: متن کل فضا رو بگیره */
+    flex: 1;
     text-align: right;
 }
 
 .item-img {
-    width: 100px;         /* یا هر سایزی که داری */
-    flex-shrink: 0;       /* نذاره عکس جمع بشه */
+    width: 100px;
+    flex-shrink: 0;
 }
        
 /* ---------- MODAL ---------- */
@@ -274,14 +279,13 @@ details[open] summary::before{
                     <div class="item-info">
                         <div class="item-name">سالاد فصل</div>
                         <div class="item-desc"></div>
-                        <div class="price">$7</div>
+                        <div class="price">$70</div>
                     </div>
                     <img class="item-img"
                          src="images/Appetizer/garden_salad.jpg"
                          alt="Garden Salad"
                          loading="lazy" decoding="async"
                          onerror="this.onerror=null;this.src='placeholder.jpg';">
-                </div>
                 </div>
 
                 <div class="item">
