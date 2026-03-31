@@ -176,16 +176,20 @@ details[open] summary::before{
 }
 
 /* ---------- Right to Left for Farsi ---------- */
-       .menu-item {
+.menu-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* مهم */
 }
 
 .menu-item.rtl {
-    direction: rtl;        /* متن راست‌چین */
-    flex-direction: row-reverse; /* عکس بره چپ */
+    direction: rtl;
+    flex-direction: row-reverse;
     text-align: right;
+}
+
+.item-info {
+    margin-left: 15px; /* فاصله از عکس */
 }
        
 /* ---------- MODAL ---------- */
