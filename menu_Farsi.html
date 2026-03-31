@@ -13,7 +13,7 @@
     --header-fg:#fff;
     --accent:#c9a227;
     --muted:#444;
-    --border:#e0e0e0;
+    --border:#e0e0e0; 
     --overlay:rgba(0,0,0,.8);
 }
 
@@ -129,7 +129,7 @@ details[open] summary::before{
     align-items: center;       /* وسط‌چین عمودی */
     justify-content: center;   /* وسط‌چین افقی */
 }
-
+       
 .review-link {
     display: flex;
     align-items: center;
@@ -175,7 +175,19 @@ details[open] summary::before{
     background: #0056b3;
 }
 
-  
+/* ---------- Right to Left for Farsi ---------- */
+       .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-item.rtl {
+    direction: rtl;        /* متن راست‌چین */
+    flex-direction: row-reverse; /* عکس بره چپ */
+    text-align: right;
+}
+       
 /* ---------- MODAL ---------- */
 .modal{
     display:none;
