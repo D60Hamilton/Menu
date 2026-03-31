@@ -180,13 +180,21 @@ details[open] summary::before{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px; /* بهترین روش فاصله */
 }
 
 .menu-item.rtl {
     direction: rtl;
     flex-direction: row-reverse;
+}
+
+.item-info {
+    flex: 1;              /* خیلی مهم: متن کل فضا رو بگیره */
     text-align: right;
+}
+
+.item-img {
+    width: 100px;         /* یا هر سایزی که داری */
+    flex-shrink: 0;       /* نذاره عکس جمع بشه */
 }
        
 /* ---------- MODAL ---------- */
