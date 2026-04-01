@@ -181,11 +181,12 @@ details[open] summary::before{
     align-items: center;
     justify-content: space-between;
     gap: 15px;
+    border-bottom: 1px solid #ddd; /* اگه خطت پریده */
+    padding: 15px 0;
 }
 
 .menu-item.rtl {
     direction: rtl;
-    flex-direction: row-reverse;
 }
 
 .item-info {
@@ -196,6 +197,7 @@ details[open] summary::before{
 .item-img {
     width: 100px;
     flex-shrink: 0;
+    margin-left: auto; /* 👈 عکس میره کامل سمت چپ */
 }
        
 /* ---------- MODAL ---------- */
@@ -279,7 +281,7 @@ details[open] summary::before{
                     <div class="item-info">
                         <div class="item-name">سالاد فصل</div>
                         <div class="item-desc"></div>
-                        <div class="price">$70</div>
+                        <div class="price">$7</div>
                     </div>
                     <img class="item-img"
                          src="images/Appetizer/garden_salad.jpg"
