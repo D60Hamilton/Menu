@@ -79,18 +79,24 @@ summary{
 summary::-webkit-details-marker{display:none}
 
 /* single arrow */
-/* container اصلی منو */
+/* راست‌چین کل منو */
 .menu {
-    direction: rtl;       /* راست‌چین کل منو */
-    text-align: right;    /* متن راست‌چین */
-    position: relative;
+    direction: rtl;
 }
 
-/* single arrow */
+/* راست‌چین کردن summary و فاصله از فلش */
+details > summary {
+    text-align: right;      /* متن راست‌چین */
+    padding-right: 30px;    /* فاصله از فلش سمت راست */
+    position: relative;     /* برای فلش absolute */
+    cursor: pointer;
+}
+
+/* فلش سمت راست */
 summary::before {
     content: "▶";
     position: absolute;
-    right: 12px;          /* فلش سمت راست قرار میگیره */
+    right: 12px;          
     top: 50%;
     transform: translateY(-50%);
     transition: transform .2s ease;
@@ -98,13 +104,6 @@ summary::before {
 
 details[open] summary::before {
     transform: translateY(-50%) rotate(90deg);
-}
-
-.divider {
-    height: 2px;
-    background: var(--accent);
-    margin: 12px 0 18px;
-    border-radius: 2px;
 }
        
 /* ---------- ITEMS ---------- */
@@ -270,7 +269,7 @@ details[open] summary::before {
         <!-- --------------------------- Appetizers --------------------------- -->
         <div class="section">
             <details>
-                <summary>پیش غذا</summary>
+                <summary>پیش یییغذا</summary>
                 <div class="divider"></div>
 
                     <div class="menu-item rtl">
