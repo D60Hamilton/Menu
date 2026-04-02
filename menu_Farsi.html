@@ -206,6 +206,30 @@ details[open] summary::before {
     flex-shrink: 0;
     margin-left: auto; /* 👈 عکس میره کامل سمت چپ */
 }
+
+
+       .controls {
+  margin-top: 15px;
+}
+
+       
+/* ---------- Snake game ---------- */
+.controls button {
+  font-size: 24px;          /* بزرگ شدن آیکن */
+  padding: 12px 16px;       /* بزرگ شدن دکمه */
+  margin: 5px;
+  border: none;
+  border-radius: 10px;
+  background: #c9a227;
+  color: #000;
+  cursor: pointer;
+  min-width: 60px;
+}
+
+.controls button:active {
+  transform: scale(0.95);   /* افکت فشرده شدن */
+}
+
        
 /* ---------- MODAL ---------- */
 .modal{
@@ -1529,35 +1553,66 @@ loadQuestion();
 
 <!--------------------Snake -------------------->
 <div style="text-align:center; margin-top:40px;">
-  <button id="startBtn" style="margin-bottom:10px; padding:8px 16px; border:none; border-radius:8px; background:#c9a227; color:#000; font-weight:bold;">
+
+  <button id="startBtn" style="margin-bottom:10px; padding:10px 18px; border:none; border-radius:10px; background:#c9a227; color:#000; font-weight:bold; font-size:16px;">
     شروع بازی 🐍
   </button>
 
-  <br>
-  <canvas id="snakeGame" width="300" height="300" style="background:#111; border-radius:10px;"></canvas>
+  <div id="score" style="margin:10px; color:#c9a227; font-weight:bold; font-size:18px;">
+    امتیاز: 0
+  </div>
+
+  <canvas id="snakeGame" width="300" height="300" style="background:#111; border-radius:12px;"></canvas>
 
   <!-- کنترل‌ها -->
-  <div style="margin-top:15px;">
+  <div class="controls">
     <button onclick="setDir('UP')">⬆️</button><br>
     <button onclick="setDir('LEFT')">⬅️</button>
     <button onclick="setDir('DOWN')">⬇️</button>
     <button onclick="setDir('RIGHT')">➡️</button>
   </div>
+
 </div>
+
+<style>
+.controls {
+  margin-top: 15px;
+}
+
+.controls button {
+  font-size: 26px;
+  padding: 14px 18px;
+  margin: 6px;
+  border: none;
+  border-radius: 12px;
+  background: #c9a227;
+  color: #000;
+  cursor: pointer;
+  min-width: 65px;
+}
+
+.controls button:active {
+  transform: scale(0.92);
+}
+</style>
 
 <script>
 const canvas = document.getElementById("snakeGame");
 const ctx = canvas.getContext("2d");
 const startBtn = document.getElementById("startBtn");
+const scoreEl = document.getElementById("score");
 
 let box = 15;
-let snake, direction, food, game;
+let snake, direction, food, game, score;
 
 startBtn.addEventListener("click", startGame);
 
 function startGame(){
   snake = [{x: 150, y: 150}];
   direction = "RIGHT";
+  score = 0;
+  scoreEl.innerText = "امتیاز: 0";
+
   food = {
     x: Math.floor(Math.random()*20)*box,
     y: Math.floor(Math.random()*20)*box
@@ -1567,7 +1622,6 @@ function startGame(){
   game = setInterval(draw, 120);
 }
 
-// کنترل با دکمه
 function setDir(dir){
   if(dir === "UP" && direction !== "DOWN") direction = "UP";
   if(dir === "DOWN" && direction !== "UP") direction = "DOWN";
@@ -1575,7 +1629,7 @@ function setDir(dir){
   if(dir === "RIGHT" && direction !== "LEFT") direction = "RIGHT";
 }
 
-// کیبورد هم هنوز کار می‌کنه
+// کیبورد
 document.addEventListener("keydown", e => {
   if(e.key === "ArrowUp") setDir("UP");
   if(e.key === "ArrowDown") setDir("DOWN");
@@ -1587,9 +1641,11 @@ function draw(){
   ctx.fillStyle = "#111";
   ctx.fillRect(0, 0, 300, 300);
 
+  // snake
   ctx.fillStyle = "#c9a227";
   snake.forEach(s => ctx.fillRect(s.x, s.y, box, box));
 
+  // food
   ctx.fillStyle = "red";
   ctx.fillRect(food.x, food.y, box, box);
 
@@ -1601,7 +1657,11 @@ function draw(){
   if(direction === "LEFT") headX -= box;
   if(direction === "RIGHT") headX += box;
 
+  // خوردن غذا
   if(headX === food.x && headY === food.y){
+    score++;
+    scoreEl.innerText = "امتیاز: " + score;
+
     food = {
       x: Math.floor(Math.random()*20)*box,
       y: Math.floor(Math.random()*20)*box
@@ -1612,10 +1672,11 @@ function draw(){
 
   let newHead = {x: headX, y: headY};
 
+  // باخت
   if(headX < 0 || headY < 0 || headX >= 300 || headY >= 300 ||
      snake.some(s => s.x === headX && s.y === headY)) {
     clearInterval(game);
-    alert("باختی 😄");
+    alert("باختی 😄 امتیاز: " + score);
   }
 
   snake.unshift(newHead);
