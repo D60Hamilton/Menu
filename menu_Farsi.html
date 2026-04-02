@@ -1467,7 +1467,7 @@ details[open] summary::before {
 </style>
 
 <script>
-const questions = [
+<!--const questions = [
   { q: "کارتون رایج عصرها؟", o: ["پسر شجاع", "بن تن", "تام و جری", "باب اسفنجی"], a: 0 },
   { q: "تلویزیون رایج؟", o: ["LED", "LCD", "سیاه‌وسفید", "OLED"], a: 2 },
   { q: "کنترل تلویزیون؟", o: ["ریموت", "دکمه", "اپ موبایل", "صدا"], a: 1 },
@@ -1489,7 +1489,6 @@ const questions = [
   { q: "صف بستن؟", o: ["سینما", "سوپر", "مدرسه", "همه"], a: 3 },
   { q: "خاطره مشترک؟", o: ["WiFi", "کوچه", "گوشی", "هدفون"], a: 1 }
 ];
-
 let current = 0;
 let score = 0;
 
@@ -1526,8 +1525,78 @@ function nextQuestion() {
 
 loadQuestion();
 </script>
+-->
 
+<!--------------------Snake -------------------->
+    <div style="text-align:center; margin-top:40px;">
+  <canvas id="snakeGame" width="300" height="300" style="background:#111; border-radius:10px;"></canvas>
+</div>
 
+<script>
+const canvas = document.getElementById("snakeGame");
+const ctx = canvas.getContext("2d");
+
+let box = 15;
+let snake = [{x: 150, y: 150}];
+let direction = "RIGHT";
+let food = {
+  x: Math.floor(Math.random()*20)*box,
+  y: Math.floor(Math.random()*20)*box
+};
+
+document.addEventListener("keydown", changeDirection);
+
+function changeDirection(e) {
+  if(e.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
+  else if(e.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
+  else if(e.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
+  else if(e.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
+}
+
+function draw() {
+  ctx.fillStyle = "#111";
+  ctx.fillRect(0, 0, 300, 300);
+
+  // snake
+  ctx.fillStyle = "#c9a227";
+  snake.forEach(s => ctx.fillRect(s.x, s.y, box, box));
+
+  // food
+  ctx.fillStyle = "red";
+  ctx.fillRect(food.x, food.y, box, box);
+
+  let headX = snake[0].x;
+  let headY = snake[0].y;
+
+  if(direction === "UP") headY -= box;
+  if(direction === "DOWN") headY += box;
+  if(direction === "LEFT") headX -= box;
+  if(direction === "RIGHT") headX += box;
+
+  // eat food
+  if(headX === food.x && headY === food.y){
+    food = {
+      x: Math.floor(Math.random()*20)*box,
+      y: Math.floor(Math.random()*20)*box
+    };
+  } else {
+    snake.pop();
+  }
+
+  let newHead = {x: headX, y: headY};
+
+  // game over
+  if(headX < 0 || headY < 0 || headX >= 300 || headY >= 300 ||
+     snake.some(s => s.x === headX && s.y === headY)) {
+    clearInterval(game);
+    alert("Game Over 😄");
+  }
+
+  snake.unshift(newHead);
+}
+
+let game = setInterval(draw, 120);
+</script>
 <!------------------------------------- GAME END ------------------------------------->
     
     
