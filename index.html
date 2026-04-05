@@ -175,7 +175,18 @@ details[open] summary::before{
     background: #0056b3;
 }
 
-  
+
+/* ---------- إBurger Ad-ons Border ---------- */
+
+    .item-box {
+    border: 2px solid #c9a227;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 15px;
+    background: rgba(201,162,39,0.05); /* بک‌گراند خیلی ملایم */
+}
+
+       
 /* ---------- MODAL ---------- */
 .modal{
     display:none;
@@ -457,16 +468,20 @@ details[open] summary::before{
                 <summary>Smash Burger</summary>
                 <div class="divider"></div>
 
-                    <div class="item-name">Free Side (Choose one):</div>
-                    <div class="item-desc">Fries | Coleslaw | Garden Salad</div>
-<br>
-                    <div class="item-name">Upgrade your side:</div>
-                    <div class="item-desc">Poutine (+$3) | Onion Rings (+$3) | Sweet Potato (+$3) | Caesar (+$6)</div>
-<br>
+<div class="item-box">
 
-                    <div class="item-name">Add-ons:</div>
-                    <div class="item-desc">Extra Patty (+$4) | Mushroom (+$2.0) | Jalapeno (+$2) | Pineapple (+$2) | Brie (+$2) | Bacon (+$3) | Cheddar (+$2) | Mozzarella (+$2) | Egg (+$3)</div>
-<br>
+    <div class="item-name">Free Side (Choose one):</div>
+    <div class="item-desc">Fries | Coleslaw | Garden Salad</div>
+    <br>
+
+    <div class="item-name">Upgrade your side:</div>
+    <div class="item-desc">Poutine (+$3) | Onion Rings (+$3) | Sweet Potato (+$3) | Caesar (+$6)</div>
+    <br>
+
+    <div class="item-name">Add-ons:</div>
+    <div class="item-desc">Extra Patty (+$4) | Mushroom (+$2.0) | Jalapeno (+$2) | Pineapple (+$2) | Brie (+$2) | Bacon (+$3) | Cheddar (+$2) | Mozzarella (+$2) | Egg (+$3)</div>
+
+</div>
                 <div class="item">
                     <div class="item-info">
                         <div class="item-name">Savor Saver</div>
