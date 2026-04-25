@@ -207,10 +207,14 @@ details[open] summary::before {
     text-align: right;
 }
        
-.item-img {
-    width: 100px;
-    flex-shrink: 0;
-    margin-left: auto; /* 👈 عکس میره کامل سمت چپ */
+.item-img{
+    width:100px;
+    height:100px;
+    object-fit:cover;
+    flex-shrink:0;
+    margin-left:auto;
+    border-radius:10px;
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
 }
 
 
