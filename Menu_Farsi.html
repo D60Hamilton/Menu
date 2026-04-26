@@ -68,6 +68,7 @@ body{
 details{border:none}
 
 /* پایه */
+/* پایه */
 summary{
     display:flex;
     align-items:center;
@@ -75,23 +76,27 @@ summary{
     gap:8px;
     cursor:pointer;
     direction:rtl;
+    font-size:20px;
+    font-weight:bold;
 }
 
-/* فلش فقط برای main */
-.main-summary::before{
+/* فلش اصلی */
+.main::before{
     content:"▶";
     transition:transform .2s ease;
 }
 
 /* فقط main rotate شود */
-details[open] > .main-summary::before{
+details[open] > .main::before{
     transform:rotate(90deg);
 }
 
-/* sub بدون rotate */
-.sub-summary::before{
+/* sub ثابت */
+.sub::before{
     content:"▶";
 }
+
+
 summary{
     direction:rtl;
 }
@@ -137,10 +142,6 @@ details[open] > .main-summary::before{
     transform:rotate(90deg);
 }
 
-
-details[open] summary::before {
-    transform: translateY(-50%) rotate(90deg);
-}
        
 /* ---------- ITEMS ---------- */
 .item{
@@ -999,10 +1000,10 @@ details[open] summary::before {
         <!-- --------------------------- Soft Drinks --------------------------- -->
         <div class="section">
             <details>
-            <summary class="main-summary">نوشیدنی</summary>
+            <summary class="main">نوشیدنی</summary>
             <div class="divider"></div>    
                 <details class="sub-section">
-                <summary class="sub-summary">نوشیدنی غیر الکلی</summary>
+                <summary class="sub">نوشیدنی غیر الکلی</summary>
 
                 <div class="menu-item rtl">
                     <div class="item-info">
@@ -1083,7 +1084,7 @@ details[open] summary::before {
                 <!-- --------------------------- Hot Drinks --------------------------- -->
                 <div class="divider"></div>
                 <details class="sub-section">
-                <summary class="sub-summary">نوشیدنی گرم</summary>
+                <summary class="sub">نوشیدنی گرم</summary>
                 <div class="menu-item rtl">
                     <div class="item-info">
                         <div class="item-name">چای (استکان | قوری)</div>
@@ -1148,7 +1149,7 @@ details[open] summary::before {
         <!-- --------------------------- Beer --------------------------- -->
         <div class="divider"></div>
         <details class="sub-section">
-        <summary class="sub-summary">آبجو</summary>
+        <summary class="sub">آبجو</summary>
                 <div class="menu-item rtl">
                     <div class="item-info">
                         <div class="item-name">DRAFT: Genesis - Czech Pilsner (470 ml - ABV: 4.4%)</div>
@@ -1243,7 +1244,7 @@ details[open] summary::before {
           <!-- --------------------------- Cocktail --------------------------- -->
                 <div class="divider"></div>
                 <details class="sub-section">
-                <summary class="sub-summary">ککتل</summary>
+                <summary class="sub">ککتل</summary>
 
                 <div class="menu-item rtl">
                     <div class="item-info">
@@ -1375,7 +1376,7 @@ details[open] summary::before {
   <!-- --------------------------- Mocktail --------------------------- -->
             <div class="divider"></div>
             <details class="sub-section">
-            <summary class="sub-summary">موکتل</summary>
+            <summary class="sub">موکتل</summary>
 
                 <div class="menu-item rtl">
                     <div class="item-info">
@@ -1425,7 +1426,7 @@ details[open] summary::before {
         <!-- --------------------------- Shot --------------------------- -->
             <div class="divider"></div>
             <details class="sub-section">
-            <summary class="sub-summary">شات</summary>
+            <summary class="sub">شات</summary>
                
                 <div class="menu-item rtl">
                     <div class="item-info">
