@@ -70,6 +70,7 @@ details{border:none}
 summary{
     position:relative;
     padding-right:70px;
+    list-style:none;
 }
 
 summary::-webkit-details-marker{display:none}
@@ -88,13 +89,22 @@ details > summary {
     cursor: pointer;
 }
 
+       /* حذف فلش پیش‌فرض */
+summary::-webkit-details-marker{
+    display:none;
+}
+
+summary::marker{
+    content:"";
+}
 /* فلش سمت راست */
-summary::before {
+summary::before{
     content:"▶";
     position:absolute;
-    right:30px;   /* فاصله فلش از لبه راست */
+    right:20px;
     top:50%;
     transform:translateY(-50%);
+    transition:transform .2s ease;
 }
 
 details[open] summary::before {
