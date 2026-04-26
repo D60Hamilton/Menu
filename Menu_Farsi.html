@@ -68,13 +68,16 @@ body{
 details{border:none}
 
 summary{
-    display:block;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
     cursor:pointer;
-    position:relative;
-    list-style:none;
     font-size:20px;
     font-weight:bold;
-    padding:14px 1000px 14px 16px; /* راست برای فلش جا می‌گذارد */
+    padding:14px 16px;
+}
+summary{
+    direction:rtl;
 }
 
 summary::-webkit-details-marker{display:none}
@@ -105,10 +108,7 @@ summary::marker{
 /* فلش سفارشی */
 summary::before{
     content:"▶";
-    position:absolute;
-    right:20px;   /* جای فلش */
-    top:50%;
-    transform:translateY(-50%);
+    margin-left:auto; /* میره سمت راست */
     transition:transform .2s ease;
 }
 
