@@ -71,16 +71,13 @@ summary{
     display:flex;
     align-items:center;
     justify-content:flex-start;
-    gap:12px;
-    cursor:pointer;
+    gap:10px;
+    direction:rtl;
     font-size:20px;
     font-weight:bold;
-    padding:14px 16px;
-    direction:rtl;
+    position:relative;
 }
-summary{
-    direction:rtl;
-}
+
 .sub-section summary{
     font-size:18px;
     font-weight:600;
@@ -118,11 +115,11 @@ summary::-webkit-details-marker{
 summary::marker{
     content:"";
 }
-/* فلش سمت راست */
-/* فلش سفارشی */
-summary::before{
+       
+/* فلش پایه */
+    summary::before{
     content:"▶";
-    margin-left:0.3px; /* فاصله بین فلش و متن */
+    display:inline-block;
     transition:transform .2s ease;
 }
 .sub::before{
@@ -138,8 +135,9 @@ details[open] > .main::before{
 }
 
        
-details[open] summary::before {
-    transform: translateY(-50%) rotate(90deg);
+/* فقط وقتی باز شد */
+details[open] > summary::before{
+    transform:rotate(90deg);
 }
        
 /* ---------- ITEMS ---------- */
