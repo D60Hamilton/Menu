@@ -68,12 +68,8 @@ body{
 details{border:none}
 
 summary{
-    list-style:none;
-    cursor:pointer;
-    padding:14px 100px 14px 36px;
-    font-size:20px;
-    font-weight:bold;
     position:relative;
+    padding-right:70px;
 }
 
 summary::-webkit-details-marker{display:none}
@@ -93,13 +89,12 @@ details > summary {
 }
 
 /* فلش سمت راست */
-summary::before{
+summary::before {
     content:"▶";
     position:absolute;
-    right:12px;
+    right:30px;   /* فاصله فلش از لبه راست */
     top:50%;
     transform:translateY(-50%);
-    transition:transform .2s ease;
 }
 
 details[open] summary::before {
