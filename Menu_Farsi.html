@@ -118,13 +118,8 @@ summary::-webkit-details-marker{
 summary::marker{
     content:"";
 }
-/* فلش سمت راست */
-/* فلش سفارشی */
-summary::before{
-    content:"▶";
-    margin-left:0.3px; /* فاصله بین فلش و متن */
-    transition:transform .2s ease;
-}
+
+
        .main-summary::before{
     content:"▶";
     margin-left:8px;
@@ -134,10 +129,7 @@ summary::before{
 details[open] > .main-summary::before{
     transform:rotate(90deg);
 }
-       .sub-summary::before{
-    content:"▶";
-    margin-left:8px;
-}
+
 
 details[open] summary::before {
     transform: translateY(-50%) rotate(90deg);
@@ -1084,7 +1076,7 @@ details[open] summary::before {
                 <!-- --------------------------- Hot Drinks --------------------------- -->
                 <div class="divider"></div>
                 <details class="sub-section">
-                <summary class="sub-summary">نوشیدنی غیر الکلی</summary>
+                <summary class="sub-summary">نوشیدنی گرم</summary>
                 <div class="menu-item rtl">
                     <div class="item-info">
                         <div class="item-name">چای (استکان | قوری)</div>
@@ -1149,7 +1141,7 @@ details[open] summary::before {
         <!-- --------------------------- Beer --------------------------- -->
         <div class="divider"></div>
         <details class="sub-section">
-        <summary class="sub-summary">نوشیدنی غیر الکلی</summary>
+        <summary class="sub-summary">آبجو</summary>
                 <div class="menu-item rtl">
                     <div class="item-info">
                         <div class="item-name">DRAFT: Genesis - Czech Pilsner (470 ml - ABV: 4.4%)</div>
@@ -1244,7 +1236,7 @@ details[open] summary::before {
           <!-- --------------------------- Cocktail --------------------------- -->
                 <div class="divider"></div>
                 <details class="sub-section">
-                <summary class="sub-summary">نوشیدنی غیر الکلی</summary>
+                <summary class="sub-summary">ککتل</summary>
 
                 <div class="menu-item rtl">
                     <div class="item-info">
@@ -1376,7 +1368,7 @@ details[open] summary::before {
   <!-- --------------------------- Mocktail --------------------------- -->
             <div class="divider"></div>
             <details class="sub-section">
-            <summary class="sub-summary">نوشیدنی غیر الکلی</summary>
+            <summary class="sub-summary">موکتل</summary>
 
                 <div class="menu-item rtl">
                     <div class="item-info">
@@ -1426,7 +1418,7 @@ details[open] summary::before {
         <!-- --------------------------- Shot --------------------------- -->
             <div class="divider"></div>
             <details class="sub-section">
-            <summary class="sub-summary">نوشیدنی غیر الکلی</summary>
+            <summary class="sub-summary">شات</summary>
                
                 <div class="menu-item rtl">
                     <div class="item-info">
