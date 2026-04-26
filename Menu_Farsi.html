@@ -125,7 +125,19 @@ summary::before{
     margin-left:0.3px; /* فاصله بین فلش و متن */
     transition:transform .2s ease;
 }
+.sub::before{
+    content:"▶";
+}
 
+.main::before{
+    content:"▶";
+}
+
+details[open] > .main::before{
+    transform:rotate(90deg);
+}
+
+       
 details[open] summary::before {
     transform: translateY(-50%) rotate(90deg);
 }
@@ -987,10 +999,10 @@ details[open] summary::before {
         <!-- --------------------------- Soft Drinks --------------------------- -->
         <div class="section">
             <details>
-                <summary>نوشیدنی </summary>
+                <summary class="main">نوشیدنی </summary>
                 <div class="divider"></div>    
                 <details class="sub-section">
-                <summary>نوشیدنی غیر الکلی</summary>
+                <summary class="sub">نوشیدنی غیر الکلی</summary>
 
                 <div class="menu-item rtl">
                     <div class="item-info">
