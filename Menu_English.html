@@ -75,7 +75,19 @@ summary{
     font-weight:bold;
     position:relative;
 }
-
+    .sub-section summary{
+    font-size:18px;
+    font-weight:600;
+    padding:10px 16px;
+    background:#f7f7f7;
+    margin:6px 0;
+    border-radius:8px;
+}
+.sub-section{
+    margin-right:25px;
+    border-right:2px solid #eee;
+    padding-right:10px;
+}
 summary::-webkit-details-marker{display:none}
 
 /* single arrow */
@@ -899,8 +911,10 @@ details[open] summary::before{
         <!-- --------------------------- Soft Drinks --------------------------- -->
         <div class="section">
             <details>
+            <summary> Drink</summary>
+            <div class="divider"></div>
+                <details class="sub-section">    
                 <summary>Soft Drink</summary>
-                <div class="divider"></div>
 
                 <div class="item">
                     <div class="item-info">
@@ -980,10 +994,10 @@ details[open] summary::before{
         </div>
 
                 <!-- --------------------------- Hot Drinks --------------------------- -->
-        <div class="section">
-            <details>
+             <div class="divider"></div>
+        <details class="sub-section"> 
                 <summary>Hot Drink</summary>
-                <div class="divider"></div>
+                
 
                 <div class="item">
                     <div class="item-info">
@@ -1040,11 +1054,10 @@ details[open] summary::before{
 
         
         <!-- --------------------------- Beer --------------------------- -->
-        <div class="section">
-            <details>
+        <div class="divider"></div>
+        <details class="sub-section">
                 <summary>Beer</summary>
-                <div class="divider"></div>
-
+                
                 <div class="item">
                     <div class="item-info">
                         <div class="item-name">DRAFT: Genesis - Czech Pilsner (470 ml - ABV: 4.4%)</div>
@@ -1138,10 +1151,10 @@ details[open] summary::before{
         </div>
 
           <!-- --------------------------- Cocktail --------------------------- -->
-        <div class="section">
-            <details>
+        <div class="divider"></div>
+            <details class="sub-section">
                 <summary>Cocktail</summary>
-                <div class="divider"></div>
+                
 
                 <div class="item">
                     <div class="item-info">
@@ -1271,11 +1284,10 @@ details[open] summary::before{
             </details>
         </div>
   <!-- --------------------------- Mocktail --------------------------- -->
-        <div class="section">
-            <details>
+        <div class="divider"></div>
+            <details class="sub-section">
                 <summary>Mocktail</summary>
-                <div class="divider"></div>
-
+                
                 <div class="item">
                     <div class="item-info">
                         <div class="item-name">Mojito</div>
@@ -1323,10 +1335,10 @@ details[open] summary::before{
         </div>
 
         <!-- --------------------------- Shot --------------------------- -->
-        <div class="section">
-            <details>
+       <div class="divider"></div>
+            <details class="sub-section">
                 <summary>Shot</summary>
-                <div class="divider"></div>
+                
 
                 <div class="item">
                     <div class="item-info">
