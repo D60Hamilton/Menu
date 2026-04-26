@@ -67,36 +67,17 @@ body{
 /* ---------- DETAILS / SUMMARY ---------- */
 details{border:none}
 
-/* پایه */
-/* پایه */
 summary{
     display:flex;
     align-items:center;
     justify-content:flex-start;
-    gap:8px;
+    gap:12px;
     cursor:pointer;
-    direction:rtl;
     font-size:20px;
     font-weight:bold;
+    padding:14px 16px;
+    direction:rtl;
 }
-
-/* فلش اصلی */
-.main::before{
-    content:"▶";
-    transition:transform .2s ease;
-}
-
-/* فقط main rotate شود */
-details[open] > .main::before{
-    transform:rotate(90deg);
-}
-
-/* sub ثابت */
-.sub::before{
-    content:"▶";
-}
-
-
 summary{
     direction:rtl;
 }
@@ -137,11 +118,17 @@ summary::-webkit-details-marker{
 summary::marker{
     content:"";
 }
-
-details[open] > .main-summary::before{
-    transform:rotate(90deg);
+/* فلش سمت راست */
+/* فلش سفارشی */
+summary::before{
+    content:"▶";
+    margin-left:0.3px; /* فاصله بین فلش و متن */
+    transition:transform .2s ease;
 }
 
+details[open] summary::before {
+    transform: translateY(-50%) rotate(90deg);
+}
        
 /* ---------- ITEMS ---------- */
 .item{
@@ -1000,10 +987,10 @@ details[open] > .main-summary::before{
         <!-- --------------------------- Soft Drinks --------------------------- -->
         <div class="section">
             <details>
-            <summary class="main">نوشیدنی</summary>
-            <div class="divider"></div>    
+                <summary>نوشیدنی </summary>
+                <div class="divider"></div>    
                 <details class="sub-section">
-                <summary class="sub">نوشیدنی غیر الکلی</summary>
+                <summary>نوشیدنی غیر الکلی</summary>
 
                 <div class="menu-item rtl">
                     <div class="item-info">
@@ -1084,7 +1071,7 @@ details[open] > .main-summary::before{
                 <!-- --------------------------- Hot Drinks --------------------------- -->
                 <div class="divider"></div>
                 <details class="sub-section">
-                <summary class="sub">نوشیدنی گرم</summary>
+                <summary>نوشیدنی گرم</summary>
                 <div class="menu-item rtl">
                     <div class="item-info">
                         <div class="item-name">چای (استکان | قوری)</div>
@@ -1149,7 +1136,7 @@ details[open] > .main-summary::before{
         <!-- --------------------------- Beer --------------------------- -->
         <div class="divider"></div>
         <details class="sub-section">
-        <summary class="sub">آبجو</summary>
+        <summary>آبجو</summary>
                 <div class="menu-item rtl">
                     <div class="item-info">
                         <div class="item-name">DRAFT: Genesis - Czech Pilsner (470 ml - ABV: 4.4%)</div>
@@ -1244,7 +1231,7 @@ details[open] > .main-summary::before{
           <!-- --------------------------- Cocktail --------------------------- -->
                 <div class="divider"></div>
                 <details class="sub-section">
-                <summary class="sub">ککتل</summary>
+                <summary>ککتل</summary>
 
                 <div class="menu-item rtl">
                     <div class="item-info">
@@ -1376,7 +1363,7 @@ details[open] > .main-summary::before{
   <!-- --------------------------- Mocktail --------------------------- -->
             <div class="divider"></div>
             <details class="sub-section">
-            <summary class="sub">موکتل</summary>
+            <summary>موکتل</summary>
 
                 <div class="menu-item rtl">
                     <div class="item-info">
@@ -1426,7 +1413,7 @@ details[open] > .main-summary::before{
         <!-- --------------------------- Shot --------------------------- -->
             <div class="divider"></div>
             <details class="sub-section">
-            <summary class="sub">شات</summary>
+            <summary>شات</summary>
                
                 <div class="menu-item rtl">
                     <div class="item-info">
@@ -1793,51 +1780,3 @@ function draw(){
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
