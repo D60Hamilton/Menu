@@ -81,7 +81,14 @@ summary{
 summary{
     direction:rtl;
 }
-
+.sub-section summary{
+    font-size:18px;
+    font-weight:600;
+    padding:10px 16px;
+    background:#f7f7f7;
+    margin:6px 0;
+    border-radius:8px;
+}
 summary::-webkit-details-marker{display:none}
 
 /* single arrow */
@@ -975,8 +982,11 @@ details[open] summary::before {
         <!-- --------------------------- Soft Drinks --------------------------- -->
         <div class="section">
             <details>
-                <summary>نوشیدنی غیر الکلی</summary>
+                <summary>نوشیدنی </summary>
                 <div class="divider"></div>
+                
+                <details class="sub-section">
+                <summary>نوشیدنی غیر الکلی</summary>
 
                 <div class="menu-item rtl">
                     <div class="item-info">
